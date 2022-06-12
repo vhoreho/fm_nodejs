@@ -8,7 +8,11 @@ export const getOSParams = (prop) => {
             console.log(JSON.stringify(os.EOL));
             break;
         case 'cpus':
-            console.log(os.cpus());
+            const cpus = os.cpus();
+            for (let cpu in cpus) {
+                let cpuItem = {model: cpus[cpu].model, speed: +(cpus[cpu].speed/1000).toFixed(1)}
+                console.log(cpuItem);
+            }
             break;
         case 'homedir':
             console.log(os.homedir());
